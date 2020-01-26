@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using VoBoo.Services;
 using VoBoo.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace VoBoo
 {
@@ -45,8 +46,24 @@ namespace VoBoo
 			})
 				.AddEntityFrameworkStores<ApplicationDbContext>()
 				.AddDefaultTokenProviders();
-			
-			services.AddRazorPages();
+
+			services.ConfigureApplicationCookie(options =>
+			{
+				options.LoginPath = "/Identity/Account/Login";
+				options.AccessDeniedPath = "/";
+			});
+
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+			});
+
+			services.AddRazorPages()
+				.AddRazorPagesOptions(options => 
+				{
+					options.Conventions.AuthorizeFolder("/private");
+					options.Conventions.AuthorizeFolder("/private/admin", "RequireAdminRole");
+				});
 
 			services.Configure<EmailSettings>(es =>
 			{
@@ -56,6 +73,8 @@ namespace VoBoo
 				es.Sender = Configuration.GetSection("EmailSettings:Sender").Value;
 				es.Password = Configuration.GetSection("EmailSettings:Password").Value;
 			});
+
+			services.AddControllersWithViews().AddRazorRuntimeCompilation();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

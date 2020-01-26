@@ -1,0 +1,21 @@
+﻿@page
+@model VoBoo.LanguagesModel
+@{
+    ViewData["Title"] = "Languages";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<div class="row">
+	<div class="col-md-5">
+		<a class="btn btn-success" asp-area="" asp-page="/Private/Admin/AddLanguage">Add Language</a>
+		<hr />
+		<h4>Available languages</h4>
+		<ul>
+			@foreach (var item in Model.LanguageNames)
+			{
+				<li>@item</li>
+			}
+		</ul>
+	</div>
+</div>
