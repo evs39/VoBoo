@@ -73,6 +73,8 @@ namespace VoBoo
 				es.Sender = Configuration.GetSection("EmailSettings:Sender").Value;
 				es.Password = Configuration.GetSection("EmailSettings:Password").Value;
 			});
+
+			services.AddControllersWithViews().AddRazorRuntimeCompilation();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

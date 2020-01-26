@@ -20,7 +20,7 @@ namespace VoBoo.Extensions
 			result = words[0].FirstCharToUpper();
 			for (int i = 1; i < words.Length; i++)
 			{
-				result += '\x20' + words[i];
+				result += '\x20' + words[i].FirstCharToUpper();
 			}
 
 			return result;

@@ -15,6 +15,7 @@ namespace VoBoo
     {
         private readonly ApplicationDbContext _context;
 
+        [BindProperty]
         public InputModel Input { get; set; }
 
         public AddLanguageModel(ApplicationDbContext context)
@@ -33,7 +34,8 @@ namespace VoBoo
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var language = await _context.Languages.FirstOrDefaultAsync(l => l.Name.ToLower().Trim() == Input.Name.ToLower().Trim());
+            var language = await _context.Languages
+                .FirstOrDefaultAsync(l => l.Name.ToLower().Trim() == Input.Name.ToLower().Trim());
             if (language != null)
             {
                 ModelState.AddModelError(string.Empty, "");

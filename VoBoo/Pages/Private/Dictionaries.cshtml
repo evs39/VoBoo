@@ -4,27 +4,29 @@
     ViewData["Title"] = "Dictionaries";
 }
 
-<h1>Dictionaries</h1>
+<h1>@ViewData["Title"]</h1>
+<hr />
 <div class="row">
-	@if (Model.UserDictionaries.Count == 0)
-	{
-		<h4>
-			You don't have any dictionary yet
-		</h4>
-	}
-	else
-	{
-		<h4>
-			Your dictionaries
-		</h4>
-		<ul>
-			@foreach (var item in Model.UserDictionaries)
-			{
-				<li>item.Name</li>
-			}
-		</ul>
-	}
-</div>
-<div class="row">
-	<a class="btn btn-info" asp-area="" asp-page="/Private/AddDictionary">Add dictionary</a>
+	<div class="col-md-5">
+		<a class="btn btn-info" asp-area="" asp-page="/Private/AddDictionary">Add dictionary</a>
+		<hr />
+		@if (Model.UserDictionaries.Count == 0)
+		{
+			<h4>
+				You don't have any dictionary yet
+			</h4>
+		}
+		else
+		{
+			<h4>
+				Your dictionaries:
+			</h4>
+			<ul>
+				@foreach (var item in Model.UserDictionaries)
+				{
+					<li>@item.Name</li>
+				}
+			</ul>
+		}
+	</div>
 </div>
