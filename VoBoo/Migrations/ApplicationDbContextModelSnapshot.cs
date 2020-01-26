@@ -8,7 +8,7 @@ using VoBoo.Data;
 
 namespace VoBoo.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    //[DbContext(typeof(UserManager))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -260,7 +260,7 @@ namespace VoBoo.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<long?>("KnownLangId")
+                    b.Property<long>("KnownLangId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("LearningLangId")
@@ -311,7 +311,7 @@ namespace VoBoo.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<long?>("TranslationId")
+                    b.Property<long>("TranslationId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("WordId")
@@ -396,7 +396,9 @@ namespace VoBoo.Migrations
                 {
                     b.HasOne("VoBoo.Models.Language", "KnownLang")
                         .WithMany()
-                        .HasForeignKey("KnownLangId");
+                        .HasForeignKey("KnownLangId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("VoBoo.Models.Language", "LearningLang")
                         .WithMany()
@@ -424,7 +426,9 @@ namespace VoBoo.Migrations
                 {
                     b.HasOne("VoBoo.Models.Word", "Translation")
                         .WithMany()
-                        .HasForeignKey("TranslationId");
+                        .HasForeignKey("TranslationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("VoBoo.Models.Word", "Word")
                         .WithMany()

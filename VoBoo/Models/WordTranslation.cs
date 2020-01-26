@@ -9,7 +9,7 @@ namespace VoBoo.Models
     {
         public long Id { get; set; }
         public long WordId { get; set; }
-        public long? TranslationId { get; set; }
+        public long TranslationId { get; set; }
 
         public virtual Word Word { get; set; }
         public virtual Word Translation { get; set; }

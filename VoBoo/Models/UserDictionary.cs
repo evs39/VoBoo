@@ -12,7 +12,7 @@ namespace VoBoo.Models
         public string Description { get; set; }
         public string UserId { get; set; }
         public long LearningLangId { get; set; }
-        public long? KnownLangId { get; set; }
+        public long KnownLangId { get; set; }
 
         public virtual IEnumerable<DictionaryTranslation> DictionaryTranslations { get; set; }
 
