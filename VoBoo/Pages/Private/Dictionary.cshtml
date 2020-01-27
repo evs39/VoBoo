@@ -1,0 +1,52 @@
+﻿@page
+@model VoBoo.DictionaryModel
+@{
+    ViewData["Title"] = "Dictionary";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<div class="row">
+	<div class="col-md-7 col-lg-6">
+		<div class="row">
+			<div class="col-12 col-sm-5 col-md-6">
+				<b><label asp-for="UserDictionary.Name"></label> :</b>
+			</div>
+			<div class="col-12 col-sm-7 col-md-6">
+				<div>@Model.UserDictionary.Name</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-sm-5 col-md-6">
+				<b><label asp-for="UserDictionary.Description"></label> :</b>
+			</div>
+			<div class="col-12 col-sm-7 col-md-6">
+				<div>@Model.UserDictionary.Description</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-sm-5 col-md-6">
+				<b><label asp-for="UserDictionary.LearningLang"></label> :</b>
+			</div>
+			<div class="col-12 col-sm-7 col-md-6">
+				<div>@Model.UserDictionary.LearningLang</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-sm-5 col-md-6">
+				<b><label asp-for="UserDictionary.KnownLang"></label> :</b>
+			</div>
+			<div class="col-12 col-sm-7 col-md-6">
+				<div>@Model.UserDictionary.KnownLang</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-sm-5 col-md-6">
+				<b><label asp-for="UserDictionary.WordTranslationPairCount"></label> :</b>
+			</div>
+			<div class="col-12 col-sm-7 col-md-6">
+				<div>@Model.UserDictionary.WordTranslationPairCount</div>
+			</div>
+		</div>
+	</div>
+</div>

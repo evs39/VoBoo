@@ -7,15 +7,20 @@
 <h1>@ViewData["Title"]</h1>
 <hr />
 <div class="row">
-	<div class="col-md-5">
+	<div class="col-sm-8 col-md-5">
 		<a class="btn btn-success" asp-area="" asp-page="/Private/Admin/AddLanguage">Add Language</a>
 		<hr />
 		<h4>Available languages</h4>
-		<ul>
-			@foreach (var item in Model.LanguageNames)
-			{
-				<li>@item</li>
-			}
-		</ul>
+		@foreach (var item in Model.LanguageNames)
+		{
+			<div class="row">
+				<div class="col-2">
+					<i class="icon ion-md-school" style="font-size: 23px;"></i>
+				</div>
+				<div style="margin-top: 6px;">
+					@item
+				</div>
+			</div>
+		}
 	</div>
 </div>
